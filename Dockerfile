@@ -17,3 +17,4 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs >> rust_installer.
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN cd /home/souporcell/souporcell && cargo build --release && cd /home/souporcell/troublet && cargo build --release #souporcell
 RUN git clone https://github.com/lh3/minimap2 && cd minimap2 && make #minimap for souporcell
+RUN python3.9 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #tensorflow for souporcell
