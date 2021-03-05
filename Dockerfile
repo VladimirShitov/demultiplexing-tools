@@ -16,4 +16,4 @@ RUN git clone https://github.com/wheaton5/souporcell.git
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs >> rust_installer.sh &&  bash rust_installer.sh -y #&& PATH="/home/.cargo/env:${PATH}"
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN cd /home/souporcell/souporcell && cargo build --release && cd /home/souporcell/troublet && cargo build --release #souporcell
-
+RUN git clone https://github.com/lh3/minimap2 && cd minimap2 && make #minimap for souporcell
