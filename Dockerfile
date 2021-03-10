@@ -19,3 +19,9 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN cd /home/souporcell/souporcell && cargo build --release && cd /home/souporcell/troublet && cargo build --release #souporcell
 RUN git clone https://github.com/lh3/minimap2 && cd minimap2 && make #minimap for souporcell
 RUN python3.9 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl #tensorflow for souporcell
+RUN wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 && tar -vxjf samtools-1.9.tar.bz2 && cd samtools-1.9 && make
+ENV PATH="$PATH:/home/samtools-1.9"
+ENV PATH="$PATH:/home/minimap2"
+RUN wget https://github.com/10XGenomics/vartrix/archive/v1.1.20.tar.gz && tar xvzf v1.1.20.tar.gz && cd /home/vartrix-1.1.20 && cargo build
+ENV PATH="$PATH:/home/vartrix-1.1.20/target/debug#"
+RUN  # alias scSplit=’python3.9 scSplit/scSplit’ && alias souporcell_pipeline.py=’python3.9 souporcell/souporcell_pipeline.py’ && alias demuxlet=’popscle demuxlet’ && alias freemuxlet=’popscle freemuxlet’ 
