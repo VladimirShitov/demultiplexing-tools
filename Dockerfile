@@ -1,5 +1,5 @@
 FROM lindsayliang/popscle 
-ENV PATH="/home/popscle/bin:${PATH}" #demuxlet + freemuxlet
+ENV PATH="/home/popscle/bin:${PATH}" 
 RUN apt update && apt install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt update && apt upgrade -y && apt install python3.9 -y && apt install python3.9-distutils -y && apt install python3.9-dev -y
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3.9 get-pip.py #pip
 RUN python3.9 -m pip install numpy  pandas pysam PyVCF scikit-learn scipy statistics vireoSNP && git clone https://github.com/jon-xu/scSplit #scsplit + vireo
@@ -24,4 +24,4 @@ ENV PATH="$PATH:/home/samtools-1.9"
 ENV PATH="$PATH:/home/minimap2"
 RUN wget https://github.com/10XGenomics/vartrix/archive/v1.1.20.tar.gz && tar xvzf v1.1.20.tar.gz && cd /home/vartrix-1.1.20 && cargo build
 ENV PATH="$PATH:/home/vartrix-1.1.20/target/debug#"
-RUN  # alias scSplit=’python3.9 scSplit/scSplit’ && alias souporcell_pipeline.py=’python3.9 souporcell/souporcell_pipeline.py’ && alias demuxlet=’popscle demuxlet’ && alias freemuxlet=’popscle freemuxlet’ 
+#RUN  # alias scSplit=’python3.9 scSplit/scSplit’ && alias souporcell_pipeline.py=’python3.9 souporcell/souporcell_pipeline.py’ && alias demuxlet=’popscle demuxlet’ && alias freemuxlet=’popscle freemuxlet’ 
