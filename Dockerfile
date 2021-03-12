@@ -1,4 +1,5 @@
-FROM lindsayliang/popscle
+FROM lindsayliang/popscle 
+ENV PATH="/home/popscle/bin:${PATH}" 
 RUN apt update && apt install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt update && apt upgrade -y && apt install python3.9 -y && apt install python3.9-distutils -y && apt install python3.9-dev -y && mkdir sowtware
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3.9 get-pip.py #pip
 RUN python3.9 -m pip install numpy  pandas pysam PyVCF scikit-learn scipy statistics vireoSNP && cd software && git clone https://github.com/jon-xu/scSplit #scsplit + vireo
@@ -24,5 +25,4 @@ ENV PATH="$PATH:/home/software/samtools-1.9"
 ENV PATH="$PATH:/home/software/minimap2"
 RUN cd software && wget https://github.com/10XGenomics/vartrix/archive/v1.1.20.tar.gz && tar xvzf v1.1.20.tar.gz && cd /home/software/vartrix-1.1.20 && cargo build
 ENV PATH="$PATH:/home/software/vartrix-1.1.20/target/debug#"
-
-
+RUN conda install -c bioconda freebayes #freebayes
