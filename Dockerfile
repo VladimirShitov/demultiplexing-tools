@@ -25,4 +25,4 @@ ENV PATH="$PATH:/home/minimap2"
 RUN wget https://github.com/10XGenomics/vartrix/archive/v1.1.20.tar.gz && tar xvzf v1.1.20.tar.gz && cd /home/vartrix-1.1.20 && cargo build
 ENV PATH="$PATH:/home/vartrix-1.1.20/target/debug#"
 #RUN  # alias scSplit=’python3.9 scSplit/scSplit’ && alias souporcell_pipeline.py=’python3.9 souporcell/souporcell_pipeline.py’ && alias demuxlet=’popscle demuxlet’ && alias freemuxlet=’popscle freemuxlet’ 
-RUN wget https://github.com/freebayes/freebayes/releases/download/v1.3.5/freebayes-1.3.5-src.tar.gz && tar xvzf freebayes-1.3.5-src.tar.gz #freebayes
+RUN conda install -c bioconda freebayes #freebayes
