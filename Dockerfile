@@ -1,6 +1,6 @@
 FROM lindsayliang/popscle 
 ENV PATH="/home/popscle/bin:${PATH}" 
-RUN apt update && apt install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt update && apt upgrade -y && apt install python3.9 -y && apt install python3.9-distutils -y && apt install python3.9-dev -y 
+RUN apt update && apt install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt update && apt upgrade -y && apt install python3.9 -y && apt install python3.9-distutils -y && apt install python3.9-dev -y
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3.9 get-pip.py #pip
 RUN python3.9 -m pip install numpy  pandas pysam PyVCF scikit-learn scipy statistics vireoSNP && git clone https://github.com/jon-xu/scSplit #scsplit + vireo
 ENV PATH="$PATH:/home/scSplit"
